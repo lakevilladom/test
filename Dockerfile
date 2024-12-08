@@ -1,4 +1,4 @@
-FROM	alpine
+FROM	alpine/curl:latest
 
 WORKDIR	/tmps
 
