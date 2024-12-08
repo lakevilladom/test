@@ -2,6 +2,7 @@ name: ci
 
 on:
   push:
+  workflow_dispatch:  # 允许手动触发  
 
 jobs:
   docker:
