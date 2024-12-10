@@ -10,4 +10,4 @@ COPY--from=tmps /tmps/ /opt/app/
 
 EXPOSE 80
 
-EXEC echo /opt/app/date.txt
+CMD	echo /opt/app/date.txt
