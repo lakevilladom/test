@@ -1,10 +1,7 @@
-FROM	alpine/curl:latest AS tmps
-WORKDIR	/tmps
-RUN	rm -rf ./* && date > date.txt
-
-
-
-FROM nginx:alpine
-COPY	--from=tmps /tmps/ /opt/app/
+FROM caddy:2.6.4-alpine
+RUN apk add --no-cache curl
+WORKDIR /app
+RUN curl -o btc.json https://api.coindesk.com/v1/bpi/currentprice/BTC.json
+RUN echo ":80 {\n    root * /app\n    file_server\n}" > /etc/caddy/Caddyfile
 EXPOSE 80
-CMD	cat /opt/app/date.txt && nginx -g "daemon off;"
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile"]
