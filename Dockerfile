@@ -6,7 +6,7 @@ RUN	cat date.txt
 
 FROM nginx:alpine
 
-COPY--from=tmps /tmps/ /opt/app/
+COPY	--from=tmps /tmps/ /opt/app/
 
 EXPOSE 80
 
